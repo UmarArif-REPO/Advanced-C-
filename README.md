@@ -5,5 +5,5 @@ Hi everyone,
 
 Living life and free.
 
-Lot of Love,
+Lots of Love,
 Umar
