@@ -43,22 +43,48 @@ void CCounter::Decrement()
 	mAmount--;
 }
 
-// Exercise 2: modifying the Counter class - Assigns then resets mAmount
+// Assigns then resets mAmount
 void CCounter::AssignTop()
 {
 	mTop += mAmount;
 	mAmount = 0;
 }
 
-//  Exercise 2: modifying the Counter class - Displays member variables
+// Displays member variables
 void CCounter::DisplayValues()
 {
-	std::cout << "Amount: " << mAmount << "    Top: " << mTop << std::endl;
+	std::cout << "Amount: " << Get() << "    Top: " << mTop << std::endl;
 }
 
+//  Exercise 3: using the Counter class - Counting the number of operations
 void CCounter::TheRainInSpain()
 {
+	std::cout << "The rain in spain" << std::endl;
+	Increment();
+}
 
+// Exercise 4: a Student class
+class CStudent
+{
+private:
+	std::string mName;
+	float mMark;
+public:
+	CStudent(std::string name, float mark)  // Constructor
+		: mName(name), mMark(mark) {}
+	void Set(std::string name, float mark); // 
+	void Get();                             // 
+};
+
+void CStudent::Set(std::string name, float mark)
+{
+	mName = name;
+	mMark = mark;
+}
+
+void CStudent::Get()
+{
+	std::cout << "Name: " << mName << "      Mark: " << mMark << std::endl;
 }
 
 int main()
@@ -86,8 +112,21 @@ int main()
 	myCount->DisplayValues();
 
 	int tmp = myCount->Get();
-	std::cout << tmp << std::endl;
+	std::cout << tmp << std::endl << std::endl;
 
-	delete (myCount);
+	// Exercise 3: using the Counter class 
+	CCounter* newCounter = new CCounter;
+	newCounter->Set(0);
+	for (int i = 0; i < 100; i++)
+	{
+		newCounter->TheRainInSpain();
+	}
+	newCounter->AssignTop();
+	newCounter->DisplayValues();
+
+	// Exercise 4: a Student class
+
+	delete (myCount, newCounter);
 	system("pause");
 }
+
