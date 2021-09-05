@@ -13,8 +13,8 @@ public:
 	CCounter();            // Primary constructor
 	CCounter(int number);  // Constructor that sets mAmount to number
 	void Set(int number);  // Set count to the value of number
-	int  Get(); 		   // Get the current value of amount
-	void Increment();  	   // Increment count by 1 (trivial)
+	int  Get(); 	       // Get the current value of amount
+	void Increment();      // Increment count by 1 (trivial)
 	void Decrement();      // Decrement count by 1
 	void AssignTop();      // Resets the value of mAmount and assigns the value to mTop
 	void DisplayValues();  // Displays both mAmount and mTop
