@@ -1,5 +1,5 @@
 // CO2402: Advanced C++
-// Week 3: Introduction to classes, the counter class
+// Week 3: Introduction to classes, the counter class hello
 
 #include <iostream>
 
