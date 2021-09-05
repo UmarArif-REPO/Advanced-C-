@@ -85,8 +85,8 @@ private:
 public:
 	CStudent(std::string name, float mark)  // Constructor
 		: mName(name), mMark(mark) {}
-	void Set(std::string name, float mark); // 
-	void Get();                             // 
+	void Set(std::string name, float mark); // Set the name and mark if and when you should please
+	void Get();                             // Get the name and mark
 };
 
 void CStudent::Set(std::string name, float mark)
