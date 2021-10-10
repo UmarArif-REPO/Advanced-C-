@@ -1,7 +1,5 @@
 #include <iostream>
 
-using namespace std;
-
 const int SIZE = 3;
 const int PLAYERS = 2;
 
@@ -20,8 +18,8 @@ private:
 public:
 	void CreateGrid();
 	void CreatePlayers();
-	bool CellEmpty(int x, int y);
-	bool CellNotEmpty(int x, int y);
+	bool CellEmpty(int& x, int& y);
+	bool CellNotEmpty(int& x, int& y);
 	void GamePlay();
 	void PlayerInput(int& i, int& x, int& y);
 	void Grid();
@@ -53,28 +51,25 @@ void CNought::CreatePlayers()
 }
 
 // Checks to see if the cell is empty
-bool CNought::CellEmpty(int x, int y)
+bool CNought::CellEmpty(int& x, int& y)
 {
 	return mGrid[x][y] == 0;
 }
 
-bool CNought::CellNotEmpty(int x, int y)
-{
-	return mGrid[x][y] != 0;
-}
-
+// Repeat code thus has been separated out into it's own method
 void CNought::PlayerInput(int& i, int& x, int& y)
 {
-	cout << "Player " << players[i].name << endl;
-	cout << "Please enter x coordinate: ";
-	cin >> x;
-	cout << "Please enter y coordinate: ";
-	cin >> y;
+	std::cout << "Player " << players[i].name << std::endl;
+	std::cout << "Please enter x coordinate: ";
+	std::cin >> x;
+	std::cout << "Please enter y coordinate: ";
+	std::cin >> y;
 }
 
+// COntains the while loop
 void CNought::GamePlay()
 {
-	cout << "Welcome all" << endl << endl;
+	std::cout << "Welcome all" << std::endl << std::endl;
 
 	while (mIsRunning)
 	{
@@ -89,7 +84,7 @@ void CNought::GamePlay()
 			}
 			else
 			{
-				cout << endl << "Incorrect! Square is taken!" << endl;
+				std::cout << std::endl << "Incorrect! Square is taken!" << std::endl;
 				while (!CellEmpty(x, y))
 				{
 					PlayerInput(i, x, y);
@@ -108,6 +103,7 @@ void CNought::GamePlay()
 	}
 }
 
+// Prints the grid onto the screen
 void CNought::Grid()
 {
 	for (int i = 0; i < SIZE; ++i)
@@ -129,32 +125,32 @@ void CNought::HasWon()
 		{
 			if (mGrid[i][j] == 1 && mGrid[i + 1][j] == 1 && mGrid[i + 2][j] == 1)
 			{
-				cout << "player 1 has won" << endl;
+				std::cout << "player 1 has won" << std::endl;
 				GameOver();
 			}
 			if (mGrid[i][j] == 1 && mGrid[i][j + 1] == 1 && mGrid[i][j + 2] == 1)
 			{
-				cout << "player 1 has won" << endl;
+				std::cout << "player 1 has won" << std::endl;
 				GameOver();
 			}
 			if (mGrid[i][j] == 2 && mGrid[i + 1][j] == 2 && mGrid[i + 2][j] == 2)
 			{
-				cout << "player 2 has won" << endl;
+				std::cout << "player 2 has won" << std::endl;
 				GameOver();
 			}
 			if (mGrid[i][j] == 2 && mGrid[i][j + 1] == 2 && mGrid[i][j + 2] == 2)
 			{
-				cout << "player 2 has won" << endl;
+				std::cout << "player 2 has won" << std::endl;
 				GameOver();
 			}
 			if (mGrid[i][j] == 1 && mGrid[i + 1][j + 1] == 1 && mGrid[i + 2][j + 2] == 1)
 			{
-				cout << "player 1 has won" << endl;
+				std::cout << "player 1 has won" << std::endl;
 				GameOver();
 			}
 			if (mGrid[i][j] == 2 && mGrid[i + 1][j + 1] == 2 && mGrid[i + 2][j + 2] == 2)
 			{
-				cout << "player 2 has won" << endl;
+				std::cout << "player 2 has won" << std::endl;
 				GameOver();
 			}
 		}
@@ -167,10 +163,11 @@ void CNought::Stop()
 	mIsRunning = false;
 }
 
+// Changes isRunning to false
 void CNought::GameOver()
 {
 	Stop();
-	cout << "GAME OVER!" << endl;
+	std::cout << "GAME OVER!" << std::endl;
 }
 
 int main()
@@ -179,6 +176,8 @@ int main()
 	game->CreateGrid();
 	game->CreatePlayers();
 	game->GamePlay();
+
+	delete(game); // Release memory
 
 	system("pause");
 	return 0;
