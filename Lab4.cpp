@@ -19,7 +19,6 @@ public:
 	void CreateGrid();
 	void CreatePlayers();
 	bool CellEmpty(int& x, int& y);
-	bool CellNotEmpty(int& x, int& y);
 	void GamePlay();
 	void PlayerInput(int& i, int& x, int& y);
 	void Grid();
@@ -78,7 +77,7 @@ void CNought::GamePlay()
 			int x, y;
 			PlayerInput(i, x, y);
 
-			if (mGrid[x][y] == 0)
+			if (CellEmpty(x, y))
 			{
 				mGrid[x][y] = players[i].playerID;
 			}
